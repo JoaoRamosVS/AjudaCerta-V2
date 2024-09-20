@@ -1,5 +1,6 @@
 package com.joaoramos.ajuda_certa.entities.usuario;
 
+import com.joaoramos.ajuda_certa.entities.endereco.Endereco;
 import com.joaoramos.ajuda_certa.enums.TipoPessoaEnum;
 import com.joaoramos.ajuda_certa.enums.TipoUsuarioEnum;
 import jakarta.persistence.*;
@@ -57,4 +58,8 @@ public class Usuario {
 
     @Column(name = "foto")
     private String foto;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 }
