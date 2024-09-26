@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +21,9 @@ public class UsuarioService {
         return this.usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> encontrarPorId(Long id) {
-        return this.usuarioRepository.findById(id);
+    public Usuario encontrarPorId(Long id) {
+        // Criar nova exceção aqui.
+        return this.usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID: " + id));
     }
 
     public Usuario registrarUsuario(Usuario novoUsuario) {
